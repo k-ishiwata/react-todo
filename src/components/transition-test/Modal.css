@@ -1,0 +1,64 @@
+/* Modal */
+.modal {
+  background: rgba(0, 0, 0, 0.4);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 900;
+}
+.modal-inner {
+  box-shadow: 0 0 40px rgba(100, 100, 100, 0.5);
+  width: 500px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.modal-head {
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+  background: #f9f9f9;
+  margin-bottom: 0;
+}
+.modal-head,
+.modal-foot,
+.modal-body {
+  padding: 20px;
+}
+.modal-foot {
+  padding-top: 0;
+}
+
+/* Modal Transition */
+.modal-show-enter-active {
+  opacity: 0;
+}
+
+.modal-show-enter-done {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+
+.modal-show-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+/* Modal Inner Transition */
+.modal-show-enter-active .modal-inner {
+  transform: translateY(-500px);
+}
+
+.modal-show-enter-done .modal-inner {
+  transform: translateY(0);
+  transition: transform 300ms cubic-bezier(.27,.89,.2,1.43);
+}
+
+.modal-show-exit-active .modal-inner {
+  transform: translateY(500px);
+  transition: transform 300ms cubic-bezier(.30,-0.53,.90,.44);
+}
