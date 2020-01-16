@@ -1,28 +1,11 @@
 import React from 'react'
 import TaskItem from './TaskItem'
-import { Task } from '../Types'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import { useSelector } from 'react-redux'
+import { RootState } from '../rootReducer'
 
-type Props = {
-    tasks: Task[]
-    setTasks: React.Dispatch<React.SetStateAction<Task[]>>
-}
-
-const TaskList: React.FC<Props> = ({ tasks, setTasks }) => {
-
-    const handleDone = (task: Task) => {
-        setTasks(prev => prev.map(t =>
-            t.id === task.id
-                ? { ...task, done: !task.done }
-                : t
-        ))
-    }
-
-    const handleDelete = (task: Task) => {
-        setTasks(prev => prev.filter(t =>
-            t.id !== task.id
-        ))
-    }
+const TaskList: React.FC = () => {
+    const { tasks } = useSelector((state: RootState) => state.tasks)
 
     return (
         <div className="inner">
@@ -38,11 +21,7 @@ const TaskList: React.FC<Props> = ({ tasks, setTasks }) => {
                         }}
                         classNames="fade"
                     >
-                        <TaskItem
-                            task={task}
-                            handleDone={handleDone}
-                            handleDelete={handleDelete}
-                        />
+                        <TaskItem task={task} />
                     </CSSTransition>
                 )) }
                 </TransitionGroup>
