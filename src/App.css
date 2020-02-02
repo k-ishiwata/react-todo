@@ -63,8 +63,8 @@
 
 .input-form .inner {
   display: flex;
+  position: relative;
 }
-
 .input-form .input {
   width: 80%;
   font-size: 15px;
@@ -82,6 +82,23 @@
 .input-form .btn {
   width: 20%;
 }
+
+.input-form .input.error {
+  background-color: #ffd4dd;
+  border-color: #d01137;
+}
+
+.input-form .error-message {
+  position: absolute;
+  top: 48px;
+  background-color: #d01137;
+  color: #fff;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 2px 5px;
+}
+
 
 .btn {
   font-size: 15px;
