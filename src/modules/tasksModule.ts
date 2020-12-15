@@ -42,6 +42,11 @@ const tasksModule = createSlice({
                 task.done = !task.done
             }
         },
+        updateTask (state: State, action: PayloadAction<Task>) {
+            state.tasks = state.tasks.map(t => 
+                t.id === action.payload.id ? action.payload : t
+            )
+        },
         deleteTask (state: State, action: PayloadAction<Task>) {
             state.tasks = state.tasks.filter(t =>
                 t.id !== action.payload.id
@@ -51,7 +56,7 @@ const tasksModule = createSlice({
 })
 
 export const {
-    addTask, doneTask, deleteTask
+    addTask, doneTask, deleteTask, updateTask
 } = tasksModule.actions
 
 export default tasksModule
